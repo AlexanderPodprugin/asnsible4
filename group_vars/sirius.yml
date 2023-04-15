@@ -1,0 +1,6 @@
+### global
+system_name: "sirius"
+
+### consul
+dc_name: "sirius"
+consul_ansible_group: "sirius_consul"
