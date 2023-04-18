@@ -1,15 +1,15 @@
 scope: sirius
-name: pg1
+name: {{ inventory_hostname }}
 
 restapi:
   listen: 0.0.0.0:8008
-  connect_address: 192.168.11.181:8008
+  connect_address: {{ ansible_enp0s8.ipv4.address }}:8008
 
 consul:
   host: "127.0.0.1:8500"
 
 log:
-  dir: /var/log/patroni
+  dir: {{ patroni_log }}
   file_num: 30
   file_size: 104857600
 
@@ -30,7 +30,7 @@ bootstrap:
   initdb:
     - encoding: UTF8
     - data-checksums
-    - waldir: /pgsql/pg_wal/14
+    - waldir: {{ pg_wal }}/14
 
   pg_hba:
     - host replication repluser 0.0.0.0/0 md5
@@ -39,11 +39,11 @@ bootstrap:
 
 postgresql:
   listen: 0.0.0.0:5432
-  connect_address: 192.168.11.181:5432
-  data_dir: /pgsql/pg_data/14
+  connect_address: {{ ansible_enp0s8.ipv4.address }}:5432
+  data_dir: {{ pg_data }}/14
   bin_dir: /usr/pgsql-14/bin
   basebackup:
-    - waldir: /pgsql/pg_wal/14
+    - waldir: {{ pg_wal }}/14
   authentication:
     replication:
       username: repluser

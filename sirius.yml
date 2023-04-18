@@ -2,4 +2,11 @@
   hosts: sirius_consul
   become: yes
   roles:
-    - role: consul
+    - consul
+- name: Create disks
+  hosts: sirius_postgres
+  become: yes
+  roles:
+    - disks
+    - postgres
+    - vip-manager

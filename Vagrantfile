@@ -57,7 +57,7 @@ Vagrant.configure("2") do |config|
         end
     end
     config.vm.provision "shell" do |s|
-       ssh_pub_key = File.readlines("/home/mario/.ssh/id_rsa.pub").first.strip
+       ssh_pub_key = File.readlines("/home/alex/.ssh/id_rsa.pub").first.strip
        s.inline = <<-SHELL
          mkdir -p /home/vagrant/.ssh
          sudo mkdir -p /root/.ssh

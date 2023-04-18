@@ -1,7 +1,7 @@
 [pg1]
-192.168.11.181 consul_role=client consul_iface="enp0s8"
+pg1 ansible_host=192.168.11.181 consul_role=client consul_iface="enp0s8"
 [pg2]
-192.168.11.182 consul_role=client consul_iface="enp0s8"
+pg2 ansible_host=192.168.11.182 consul_role=client consul_iface="enp0s8"
 
 [consul1]
 192.168.11.191 consul_role=server consul_iface="enp0s8"
